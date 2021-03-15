@@ -2,7 +2,7 @@
   <header class="header" :class="{ 'header--hamburger-open': hamburgerOpen }">
     <div class="header__container">
       <router-link to="/"
-        ><img class="header__logo" src="/img/logo2.png" alt="KSA logo" />
+        ><img class="header__logo" src="/img/logo.webp" alt="KSA logo" />
       </router-link>
 
       <label class="header__hamburger"

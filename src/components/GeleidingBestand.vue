@@ -3,7 +3,7 @@
     <div class="download__name">{{ bestand.naam }}</div>
     <img
       class="download__icon"
-      src="/img/download.png"
+      src="/img/download.webp"
       alt="Bestand download icoontje"
     />
   </a>
