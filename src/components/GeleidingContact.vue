@@ -7,16 +7,29 @@
     />
 
     <div>
+      <h3>{{ geleiding.afkorting }}</h3>
       <div class="contact-info__row">
-        <img class="contact-info__icon" src="/img/group.webp" alt="Groep icoontje" />
+        <img
+          class="contact-info__icon"
+          src="/img/group.webp"
+          alt="Groep icoontje"
+        />
         {{ geleiding.leeftijden }}
       </div>
       <div class="contact-info__row">
-        <img class="contact-info__icon" src="/img/call.webp" alt="Telefoon icoontje" />
+        <img
+          class="contact-info__icon"
+          src="/img/call.webp"
+          alt="Telefoon icoontje"
+        />
         {{ geleiding.gsm }}
       </div>
       <div class="contact-info__row">
-        <img class="contact-info__icon" src="/img/mail.webp" alt="Mail icoontje" />
+        <img
+          class="contact-info__icon"
+          src="/img/mail.webp"
+          alt="Mail icoontje"
+        />
         {{ geleiding.email }}
       </div>
     </div>
@@ -59,6 +72,12 @@ export default {
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1rem;
   }
 }
 </style>
