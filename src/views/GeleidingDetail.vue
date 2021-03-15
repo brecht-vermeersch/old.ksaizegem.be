@@ -8,7 +8,7 @@
       <div class="leiders">
         <h3>Leiders</h3>
 
-        <ul v-if="geleiding.leiders">
+        <ul v-if="geleiding.leiders.length">
           <li v-for="leider in geleiding.leiders" :key="leider.id">
             <geleiding-leider :leider="leider" />
           </li>
