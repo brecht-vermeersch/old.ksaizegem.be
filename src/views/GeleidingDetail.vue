@@ -1,5 +1,5 @@
 <template>
-  <div v-if="geleiding">
+  <div v-if="!geleiding.length">
     <section>
       <geleiding-info :geleiding="geleiding" />
     </section>
@@ -33,24 +33,33 @@
 
         <div>
           <h4>Algemeen</h4>
-          <ul v-if="algemeen">
-            <li v-for="bestand in algemeen" :key="bestand.bestanden_id.id">
+          <ul v-if="algemeneBestanden.length">
+            <li
+              v-for="bestand in algemeneBestanden"
+              :key="bestand.bestanden_id.id"
+            >
               <geleiding-bestand :bestand="bestand.bestanden_id" />
             </li>
           </ul>
           <p v-else>Geen bestanden te zien.</p>
 
           <h4>Boekjes</h4>
-          <ul v-if="boekjes">
-            <li v-for="bestand in boekjes" :key="bestand.bestanden_id.id">
+          <ul v-if="boekjesBestanden.length">
+            <li
+              v-for="bestand in boekjesBestanden"
+              :key="bestand.bestanden_id.id"
+            >
               <geleiding-bestand :bestand="bestand.bestanden_id" />
             </li>
           </ul>
           <p v-else>Geen bestanden te zien.</p>
 
           <h4>Andere</h4>
-          <ul v-if="andere">
-            <li v-for="bestand in andere" :key="bestand.bestanden_id.id">
+          <ul v-if="andereBestanden.length">
+            <li
+              v-for="bestand in andereBestanden"
+              :key="bestand.bestanden_id.id"
+            >
               <geleiding-bestand :bestand="bestand.bestanden_id" />
             </li>
           </ul>
@@ -78,19 +87,12 @@ export default {
 
   data() {
     return {
-      loading: true,
-      geleiding: null,
-      algemeen: [],
-      boekjes: [],
-      andere: [],
+      geleiding: [],
     };
   },
 
   async mounted() {
     this.geleiding = await api.getGeleiding(this.$route.params.id);
-    this.algemeen = this.getBestanden("algemeen");
-    this.boekjes = this.getBestanden("boekjes");
-    this.andere = this.getBestanden("andere");
   },
 
   methods: {
@@ -98,6 +100,20 @@ export default {
       return this.geleiding?.bestanden.filter((b) => {
         return b.bestanden_id && b.bestanden_id.type.naam === type;
       });
+    },
+  },
+
+  computed: {
+    algemeneBestanden() {
+      return this.getBestanden("algemeen");
+    },
+
+    boekjesBestanden() {
+      return this.getBestanden("boekjes");
+    },
+
+    andereBestanden() {
+      return this.getBestanden("andere");
     },
   },
 };

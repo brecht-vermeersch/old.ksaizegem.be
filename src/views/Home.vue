@@ -42,7 +42,6 @@ import api from "@/services/api.js";
 export default {
   data() {
     return {
-      loading: true,
       homepagina: null,
     };
   },

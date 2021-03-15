@@ -50,7 +50,6 @@ export default {
 
   data() {
     return {
-      loading: true,
       contactpagina: null,
       geleidingen: null,
     };
