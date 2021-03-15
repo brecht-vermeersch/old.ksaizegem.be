@@ -130,6 +130,10 @@ export default {
     z-index: 99;
     width: 100%;
 
+    .header__hamburger {
+      color: white;
+    }
+
     .header__container {
       height: 100vh;
     }
