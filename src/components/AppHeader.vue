@@ -6,7 +6,9 @@
       </router-link>
 
       <label class="header__hamburger"
-        >&#9776;<input
+        >
+        <img src="/img/hamburger.svg" alt="hamburger icoontje">
+        <input
           type="checkbox"
           @click="toggleHamburgerMenu"
           hidden
@@ -88,6 +90,11 @@ export default {
     justify-content: center;
     align-items: center;
     margin-left: auto;
+
+    img {
+      color: inherit;
+      height: 1.5rem;
+    }
   }
 
   &__logo {
@@ -131,7 +138,9 @@ export default {
     width: 100%;
 
     .header__hamburger {
-      color: white;
+      img {
+        filter: brightness(0) invert(1);
+      }
     }
 
     .header__container {
