@@ -1,0 +1,23 @@
+@mixin width-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+
+  @media (min-width: $screen-xs) {
+    max-width: 540px;
+  }
+
+  @media (min-width: $screen-s) {
+    max-width: 720px;
+  }
+
+  @media (min-width: $screen-m) {
+    max-width: 960px;
+  }
+
+  @media (min-width: $screen-l) {
+    max-width: 1140px;
+  }
+}

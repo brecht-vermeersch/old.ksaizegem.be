@@ -1,0 +1,65 @@
+body {
+  font-family: Avenir;
+  font-weight: 300;
+  color: #333;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.button {
+  background-color: $orange;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  color: white;
+
+  &--transparant {
+    color: inherit;
+    background-color: transparent;
+    border: 1px solid $orange;
+  }
+
+  &--blue {
+    color: inherit;
+    background-color: $blue;
+  }
+}
+
+section {
+  @include width-container;
+  margin-bottom: 3rem;
+
+  &:first-of-type {
+    margin-top: 1rem;
+  }
+}
+
+p {
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  text-align: center;
+  font-family: CCSignLanguage;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  color: $orange;
+  font-family: CCSignLanguage;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: 700;
+}
+

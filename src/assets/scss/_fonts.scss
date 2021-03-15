@@ -1,0 +1,28 @@
+@font-face {
+  font-family: CCSignLanguage;
+  src: url(~@/assets/fonts/CCSignLanguage-Italic.woff2) format("woff2"),
+    url(~@/assets/fonts/CCSignLanguage-Italic.woff) format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url(~@/assets/fonts/AvenirLTStd-Roman.woff2) format("woff2"),
+    url(~@/assets/fonts/AvenirLTStd-Roman.woff) format("woff");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url(~@/assets/fonts/AvenirLTStd-Medium.woff2) format("woff2"),
+    url(~@/assets/fonts/AvenirLTStd-Medium.woff) format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url(~@/assets/fonts/AvenirLTStd-Black.woff2) format("woff2"),
+    url(~@/assets/fonts/AvenirLTStd-Black.woff) format("woff");
+  font-weight: 700;
+}
