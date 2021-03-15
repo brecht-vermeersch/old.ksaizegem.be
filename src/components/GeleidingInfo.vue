@@ -6,7 +6,7 @@
         <abbr class="geleiding__abbr" title="Kabouters">{{ geleiding.afkorting }}</abbr>
       </div>
 
-      <a v-if="link" class="geleiding__link" :href="'geleidingen/' + geleiding.id">{{ geleiding.naam }} ></a>
+      <a v-if="link" class="geleiding__link" :href="'geleidingen/' + geleiding.naam">{{ geleiding.naam }} ></a>
 
       <p>{{ geleiding.beschrijving }}</p>
     </div>

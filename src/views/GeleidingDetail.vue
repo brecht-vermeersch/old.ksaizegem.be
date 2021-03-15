@@ -9,7 +9,7 @@
         <h3>Leiders</h3>
 
         <ul v-if="geleiding.leiders.length">
-          <li v-for="leider in geleiding.leiders" :key="leider.id">
+          <li v-for="leider in sortedLeiders" :key="leider.id">
             <geleiding-leider :leider="leider" />
           </li>
         </ul>
@@ -92,7 +92,7 @@ export default {
   },
 
   async mounted() {
-    this.geleiding = await api.getGeleiding(this.$route.params.id);
+    this.geleiding = await api.getGeleiding(this.$route.params.naam);
   },
 
   methods: {
@@ -101,6 +101,10 @@ export default {
         return b.type.naam === type;
       });
     },
+
+    isHoofdleider(leider) {
+      return leider?.functie?.toLowerCase() === "hoofdleider";
+    }
   },
 
   computed: {
@@ -115,6 +119,12 @@ export default {
     andereBestanden() {
       return this.getBestanden("andere");
     },
+
+    sortedLeiders() {
+      return [...this.geleiding.leiders].sort((a, b) => {
+        return this.isHoofdleider(b) ? 1 : -1;
+      })
+    }
   },
 };
 </script>

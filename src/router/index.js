@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
+export const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import(/* webpackChunkName: "geleidingen" */ '../views/Home.vue')
   },
   {
     path: '/geleidingen',
@@ -16,9 +15,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "geleidingen" */ '../views/Geleidingen.vue')
   },
   {
-    path: '/geleidingen/:id',
+    path: '/geleidingen/:naam',
     name: 'Geleiding',
-    component: () => import(/* webpackChunkName: "geleidingen" */ '../views/GeleidingDetail.vue')
+    component: () => import(/* webpackChunkName: "geleidingen" */ '../views/GeleidingDetail.vue'),
+    meta: {
+      sitemap: {
+        slugs: ["Kabouters", "Piepjongknapen", "Jongknapen", "Jonghernieuwers", "Hernieuwers"]
+      }
+    }
   },
   {
     path: '/contact',

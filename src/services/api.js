@@ -7,9 +7,18 @@ async function getGeleidingen() {
   return data.data;
 }
 
-async function getGeleiding(id) {
-  const { data } = await axios.get(`/items/geleidingen/${id}?fields=*,activiteiten.*,leiders.*,bestanden.*,bestanden.type.*`);
-  return data.data;
+async function getGeleiding(naam) {
+  const { data } = await axios.get(`/items/geleidingen?fields=*,activiteiten.*,leiders.*,bestanden.*,bestanden.type.*`, {
+    params: {
+      filter: {
+        naam: {
+          "_eq": naam
+        }
+      }
+    },
+  });
+
+  return data.data[0];
 }
 
 async function getHomePage() {
@@ -22,7 +31,7 @@ async function getContactPage() {
   return data.data;
 }
 
-function getAssetUrl(id, download=false) {
+function getAssetUrl(id, download = false) {
   return `https://cms.ksaizegem.be/assets/${id}${download ? "?download" : ""}`;
 }
 
