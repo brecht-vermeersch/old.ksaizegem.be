@@ -132,6 +132,7 @@ export default {
 
     .header__container {
       height: 100vh;
+      height: -webkit-fill-available;
     }
 
     .header__nav {
