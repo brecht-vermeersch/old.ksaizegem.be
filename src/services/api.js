@@ -22,8 +22,8 @@ async function getContactPage() {
   return data.data;
 }
 
-function getAssetUrl(id) {
-  return `https://cms.ksaizegem.be/assets/${id}`;
+function getAssetUrl(id, download=false) {
+  return `https://cms.ksaizegem.be/assets/${id}${download ? "?download" : ""}`;
 }
 
 export default { getGeleidingen, getGeleiding, getAssetUrl, getHomePage, getContactPage }

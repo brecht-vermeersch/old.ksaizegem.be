@@ -1,29 +1,27 @@
 <template>
-  <a download target="_blank" :href="href" class="download">
+  <directus-download :asset="bestand.bestand" class="download">
     <div class="download__name">{{ bestand.naam }}</div>
     <img
       class="download__icon"
       src="/img/download.webp"
       alt="Bestand download icoontje"
     />
-  </a>
+  </directus-download>
 </template>
 
 <script>
-import api from "@/services/api.js"
+import DirectusDownload from "@/components/DirectusDownload.vue";
 
 export default {
+  components: {
+    DirectusDownload
+  },
+
   props: {
     bestand: {
       type: Object
     }
   },
-
-  data() {
-    return {
-      href: api.getAssetUrl(this.bestand.bestand)
-    }
-  }
 }
 </script>
 

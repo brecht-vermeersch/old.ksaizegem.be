@@ -1,6 +1,6 @@
 <template>
   <div class="leider">
-    <img class="leider__portrait" :src="src" :alt="alt" />
+    <d-img class="leider__portrait" :asset="leider.foto" :alt="'Portret van ' + leider.voornaam" />
 
     <div>
       <div class="leider__naam"><strong>Naam: </strong>{{ leider.voornaam }} {{ leider.achternaam }}</div>
@@ -11,21 +11,12 @@
 </template>
 
 <script>
-import api from "@/services/api.js"
-
 export default {
   props: {
     leider: {
       type: Object,
     },
-  },
-
-  data() {
-    return {
-      src: api.getAssetUrl(this.leider.foto),
-      alt: `Portret van ${this.leider.voornaam}`
-    };
-  },
+  }
 };
 </script>
 

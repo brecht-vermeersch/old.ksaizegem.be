@@ -4,9 +4,9 @@
       <h2>Contact</h2>
 
       <div v-if="contactpagina" class="contact">
-        <img
+        <d-img
           class="contact__map"
-          :src="getAssetUrl(contactpagina.kaart)"
+          :asset="contactpagina.kaart"
           alt="Kaart van de locatie van de KSA"
         />
 
@@ -60,9 +60,6 @@ export default {
     this.geleidingen = await api.getGeleidingen();
   },
 
-  methods: {
-    getAssetUrl: api.getAssetUrl,
-  },
 };
 </script>
 

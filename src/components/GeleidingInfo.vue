@@ -11,13 +11,11 @@
       <p>{{ geleiding.beschrijving }}</p>
     </div>
 
-    <img class="geleiding__img" :src="src" :alt="'Monstertje en logo van de ' + geleiding.naam"/>
+    <d-img class="geleiding__img" :asset="geleiding.foto" :alt="'Monstertje en logo van de ' + geleiding.naam"/>
   </article>
 </template>
 
 <script>
-import api from "@/services/api.js"
-
 export default {
   props: {
     link: {
@@ -30,12 +28,6 @@ export default {
 
     geleiding: {
       type: Object
-    }
-  },
-
-  data() {
-    return {
-      src: api.getAssetUrl(this.geleiding.foto)
     }
   }
 };
