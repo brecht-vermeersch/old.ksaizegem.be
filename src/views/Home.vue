@@ -5,7 +5,7 @@
 
       <div class="hero__fg">
         <h2 class="hero__title" v-html="homepagina.slogan_tekst"></h2>
-        <a class="button button" href="#">{{ homepagina.slogan_knop }}</a>
+        <router-link class="button button" to="/inschrijven">{{ homepagina.slogan_knop }}</router-link>
       </div>
     </div>
 
@@ -16,9 +16,9 @@
         <h3>Algemeen</h3>
         <div v-html="homepagina.algemeen_tekst"></div>
 
-        <a class="button button--blue" href="#">{{
+        <router-link class="button button--blue" to="/contact">{{
           homepagina.algemeen_knop
-        }}</a>
+        }}</router-link>
       </div>
     </section>
 
@@ -30,7 +30,7 @@
 
         <div v-html="homepagina.geleidingen_tekst"></div>
 
-        <a class="button button--blue" href="#">Bezoekje brengen</a>
+        <router-link class="button button--blue" to="/geleidingen">Bezoekje brengen</router-link>
       </div>
     </section>
   </div>
