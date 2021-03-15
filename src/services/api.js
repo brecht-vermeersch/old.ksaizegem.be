@@ -3,7 +3,7 @@ import axios from "axios";
 axios.defaults.baseURL = "https://cms.ksaizegem.be";
 
 async function getGeleidingen() {
-  const { data } = await axios.get(`/items/geleidingen?sort=id`);
+  const { data } = await axios.get(`/items/geleidingen?sort=sort`);
   return data.data;
 }
 

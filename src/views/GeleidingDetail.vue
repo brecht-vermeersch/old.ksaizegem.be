@@ -33,25 +33,28 @@
 
         <div>
           <h4>Algemeen</h4>
-          <ul>
+          <ul v-if="algemeen">
             <li v-for="bestand in algemeen" :key="bestand.bestanden_id.id">
               <geleiding-bestand :bestand="bestand.bestanden_id" />
             </li>
           </ul>
+          <p v-else>Geen bestanden te zien.</p>
 
           <h4>Boekjes</h4>
-          <ul>
+          <ul v-if="boekjes">
             <li v-for="bestand in boekjes" :key="bestand.bestanden_id.id">
               <geleiding-bestand :bestand="bestand.bestanden_id" />
             </li>
           </ul>
+          <p v-else>Geen bestanden te zien.</p>
 
           <h4>Andere</h4>
-          <ul>
+          <ul v-if="andere">
             <li v-for="bestand in andere" :key="bestand.bestanden_id.id">
               <geleiding-bestand :bestand="bestand.bestanden_id" />
             </li>
           </ul>
+          <p v-else>Geen bestanden te zien.</p>
         </div>
       </div>
     </section>

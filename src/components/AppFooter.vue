@@ -3,11 +3,11 @@
     <div class="footer__copyright">KSA Izegem © 2021</div>
 
     <div class="footer__socials">
-      <a href="#">
+      <a href="https://www.facebook.com/ksaizegem" target="_blank">
         <img src="/img/facebook.webp" alt="Facebook icoontje" />
       </a>
 
-      <a href="#">
+      <a href="https://www.instagram.com/ksaizegem" target="_blank">
         <img src="/img/instagram.webp" alt="Instagram icoontje" />
       </a>
     </div>

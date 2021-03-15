@@ -2,7 +2,7 @@
   <section>
     <h2>Geleidingen</h2>
 
-    <geleiding-info link v-for="(geleiding, index) in geleidingen" :key="geleiding.id" :geleiding="geleiding" :inverted="index % 2 === 1"/>
+    <geleiding-info link v-for="(geleiding, index) in visibleGeleidingen" :key="geleiding.id" :geleiding="geleiding" :inverted="index % 2 === 1"/>
   </section>
 </template>
 
@@ -18,6 +18,12 @@ export default {
       loading: true,
       geleidingen: [],
     };
+  },
+
+  computed: {
+    visibleGeleidingen() {
+      return this.geleidingen.filter(g => g.naam !== "Bond" && g.naam !== "VZW");
+    }
   },
 
   async mounted() {  
