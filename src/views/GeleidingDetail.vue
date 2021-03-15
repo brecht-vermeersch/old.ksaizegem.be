@@ -68,6 +68,7 @@
       </div>
     </section>
   </div>
+  <spinner v-else />
 </template>
 
 <script>

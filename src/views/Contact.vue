@@ -27,6 +27,7 @@
           </div>
         </div>
       </div>
+      <spinner v-else />
     </section>
 
     <section class="contactinfo">
@@ -37,6 +38,7 @@
           <geleiding-contact :geleiding="geleiding" />
         </li>
       </ul>
+      <spinner v-else />
     </section>
   </div>
 </template>
@@ -55,11 +57,20 @@ export default {
     };
   },
 
-  async mounted() {
-    this.contactpagina = await api.getContactPage();
-    this.geleidingen = await api.getGeleidingen();
+  mounted() {
+    this.loadPage();
+    this.loadGeleidigen();
   },
 
+  methods: {
+    async loadPage() {
+      this.contactpagina = await api.getContactPage();
+    },
+
+    async loadGeleidigen() {
+      this.geleidingen = await api.getGeleidingen();
+    },
+  },
 };
 </script>
 
@@ -76,7 +87,6 @@ ul {
   li {
     margin: 1rem;
   }
-  
 }
 
 .contact {
@@ -114,9 +124,9 @@ ul {
       margin-bottom: 1rem;
     }
 
-     &__address {
-    margin-left: 0;
-     }
+    &__address {
+      margin-left: 0;
+    }
   }
 }
 </style>
