@@ -6,7 +6,7 @@
       </router-link>
 
       <label class="header__hamburger"
-        >☰<input
+        >&#9776;<input
           type="checkbox"
           @click="toggleHamburgerMenu"
           hidden
