@@ -11,7 +11,7 @@
       <p>{{ geleiding.beschrijving }}</p>
     </div>
 
-    <img class="geleiding__img" :src="src" />
+    <img class="geleiding__img" :src="src" :alt="'Monstertje en logo van de ' + geleiding.naam"/>
   </article>
 </template>
 
