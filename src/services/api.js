@@ -8,7 +8,7 @@ async function getGeleidingen() {
 }
 
 async function getGeleiding(id) {
-  const { data } = await axios.get(`/items/geleidingen/${id}?fields=*,activiteiten.*,leiders.*,bestanden.bestanden_id.*,bestanden.bestanden_id.type.*`);
+  const { data } = await axios.get(`/items/geleidingen/${id}?fields=*,activiteiten.*,leiders.*,bestanden.*,bestanden.type.*`);
   return data.data;
 }
 

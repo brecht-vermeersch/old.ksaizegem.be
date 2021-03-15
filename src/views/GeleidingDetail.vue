@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!geleiding.length">
+  <div v-if="geleiding">
     <section>
       <geleiding-info :geleiding="geleiding" />
     </section>
@@ -36,9 +36,9 @@
           <ul v-if="algemeneBestanden.length">
             <li
               v-for="bestand in algemeneBestanden"
-              :key="bestand.bestanden_id.id"
+              :key="bestand.id"
             >
-              <geleiding-bestand :bestand="bestand.bestanden_id" />
+              <geleiding-bestand :bestand="bestand" />
             </li>
           </ul>
           <p v-else>Geen bestanden te zien.</p>
@@ -47,9 +47,9 @@
           <ul v-if="boekjesBestanden.length">
             <li
               v-for="bestand in boekjesBestanden"
-              :key="bestand.bestanden_id.id"
+              :key="bestand.id"
             >
-              <geleiding-bestand :bestand="bestand.bestanden_id" />
+              <geleiding-bestand :bestand="bestand" />
             </li>
           </ul>
           <p v-else>Geen bestanden te zien.</p>
@@ -58,9 +58,9 @@
           <ul v-if="andereBestanden.length">
             <li
               v-for="bestand in andereBestanden"
-              :key="bestand.bestanden_id.id"
+              :key="bestand.id"
             >
-              <geleiding-bestand :bestand="bestand.bestanden_id" />
+              <geleiding-bestand :bestand="bestand" />
             </li>
           </ul>
           <p v-else>Geen bestanden te zien.</p>
@@ -87,7 +87,7 @@ export default {
 
   data() {
     return {
-      geleiding: [],
+      geleiding: null,
     };
   },
 
@@ -97,8 +97,8 @@ export default {
 
   methods: {
     getBestanden(type) {
-      return this.geleiding?.bestanden.filter((b) => {
-        return b.bestanden_id && b.bestanden_id.type.naam === type;
+      return this.geleiding.bestanden.filter((b) => {
+        return b.type.naam === type;
       });
     },
   },
