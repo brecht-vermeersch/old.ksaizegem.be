@@ -4,7 +4,7 @@
     <img
       class="download__icon"
       src="/img/download.png"
-      alt="todo"
+      alt="Bestand download icoontje"
     />
   </a>
 </template>

@@ -3,20 +3,20 @@
     <img
       class="contact-info__img"
       :src="getAssetUrl(geleiding.icoon)"
-      alt="todo"
+      alt="Logo van de geleiding"
     />
 
     <div>
       <div class="contact-info__row">
-        <img class="contact-info__icon" src="/img/group.webp" alt="todo" />
+        <img class="contact-info__icon" src="/img/group.webp" alt="Groep icoontje" />
         {{ geleiding.leeftijden }}
       </div>
       <div class="contact-info__row">
-        <img class="contact-info__icon" src="/img/call.webp" alt="todo" />
+        <img class="contact-info__icon" src="/img/call.webp" alt="Telefoon icoontje" />
         {{ geleiding.gsm }}
       </div>
       <div class="contact-info__row">
-        <img class="contact-info__icon" src="/img/mail.webp" alt="todo" />
+        <img class="contact-info__icon" src="/img/mail.webp" alt="Mail icoontje" />
         {{ geleiding.email }}
       </div>
     </div>

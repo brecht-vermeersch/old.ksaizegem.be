@@ -1,7 +1,7 @@
 <template>
   <div v-if="homepagina">
     <div class="hero">
-      <img class="hero__bg" src="/img/hero.webp" alt="todo" />
+      <img class="hero__bg" :src="getAssetUrl(homepagina.slogan_foto)" alt="Grote banner foto" />
 
       <div class="hero__fg">
         <h2 class="hero__title" v-html="homepagina.slogan_tekst"></h2>
@@ -10,7 +10,7 @@
     </div>
 
     <section class="algemeen">
-      <img class="algemeen__img" src="/img/hero.webp" />
+      <img class="algemeen__img" :src="getAssetUrl(homepagina.algemeen_foto)" />
 
       <div class="algemeen__card">
         <h3>Algemeen</h3>
@@ -23,7 +23,7 @@
     </section>
 
     <section class="geleidingen">
-      <img class="geleidingen__img" src="/img/hero.webp" />
+      <img class="geleidingen__img" :src="getAssetUrl(homepagina.geleidingen_foto)" />
 
       <div class="geleidingen__card">
         <h3>Geleidingen</h3>

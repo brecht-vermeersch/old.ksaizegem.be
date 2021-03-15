@@ -4,11 +4,11 @@
 
     <div class="footer__socials">
       <a href="#">
-        <img src="/img/facebook.png" alt="todo" />
+        <img src="/img/facebook.png" alt="Facebook icoontje" />
       </a>
 
       <a href="#">
-        <img src="/img/instagram.png" alt="todo" />
+        <img src="/img/instagram.png" alt="Instagram icoontje" />
       </a>
     </div>
   </footer>
