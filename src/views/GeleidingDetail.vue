@@ -97,7 +97,7 @@ export default {
   },
 
   methods: {
-    getBestanden(type) {
+    getBestandenByType(type) {
       return this.geleiding.bestanden.filter((b) => {
         return b.type.naam === type;
       });
@@ -110,15 +110,15 @@ export default {
 
   computed: {
     algemeneBestanden() {
-      return this.getBestanden("algemeen");
+      return this.getBestandenByType("algemeen");
     },
 
     boekjesBestanden() {
-      return this.getBestanden("boekjes");
+      return this.getBestandenByType("boekjes");
     },
 
     andereBestanden() {
-      return this.getBestanden("andere");
+      return this.getBestandenByType("andere");
     },
 
     sortedLeiders() {

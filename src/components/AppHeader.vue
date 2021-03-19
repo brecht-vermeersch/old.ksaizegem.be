@@ -5,14 +5,9 @@
         ><img class="header__logo" src="/img/logo.webp" alt="KSA logo" />
       </router-link>
 
-      <label class="header__hamburger"
-        >
-        <img src="/img/hamburger.svg" alt="hamburger icoontje">
-        <input
-          type="checkbox"
-          @click="toggleHamburgerMenu"
-          hidden
-        />
+      <label class="header__hamburger">
+        <img src="/img/hamburger.svg" alt="hamburger icoontje" />
+        <input type="checkbox" @click="toggleHamburgerMenu" hidden />
       </label>
 
       <nav class="header__nav">
@@ -32,6 +27,15 @@
           @click.native="closeHamburgerMenu"
           >Geleidingen</router-link
         >
+
+        <router-link
+          to="/shop"
+          class="header__link"
+          active-class="header__link--active"
+          @click.native="closeHamburgerMenu"
+          >Shop</router-link
+        >
+
         <router-link
           to="/contact"
           class="header__link"

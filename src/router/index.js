@@ -34,6 +34,11 @@ export const routes = [
     name: 'Inschrijven',
     component: () => import(/* webpackChunkName: "geleidingen" */ '../views/Inschrijven.vue')
   },
+  {
+    path: '/shop',
+    name: 'Shop',
+    component: () => import(/* webpackChunkName: "geleidingen" */ '../views/Shop.vue')
+  },
 ]
 
 const router = new VueRouter({

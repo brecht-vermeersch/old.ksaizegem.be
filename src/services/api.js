@@ -35,4 +35,9 @@ function getAssetUrl(id, download = false) {
   return `https://cms.ksaizegem.be/assets/${id}${download ? "?download" : ""}`;
 }
 
-export default { getGeleidingen, getGeleiding, getAssetUrl, getHomePage, getContactPage }
+async function getShopItemsByType() {
+  const { data } = await axios.get(`/items/winkel_artikelen_types?fields=*,artikelen.*`);
+  return data.data;
+}
+
+export default { getGeleidingen, getGeleiding, getAssetUrl, getHomePage, getContactPage, getShopItemsByType }
