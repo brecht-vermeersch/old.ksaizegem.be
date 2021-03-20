@@ -5,13 +5,13 @@
     <p>Mail de artikelen die u wilt naar bond@ksaizegem.be.</p>
 
     <div v-for="type in itemsByType" :key="type.id">
-        <h3>{{ type.naam }}</h3>
+      <h3>{{ type.naam }}</h3>
 
-        <ul>
-            <li v-for="artikel in type.artikelen" :key="artikel.id">
-                 <shop-item :item="artikel" />
-            </li>
-        </ul>
+      <ul>
+        <li v-for="artikel in type.artikelen" :key="artikel.id">
+          <shop-item :item="artikel" />
+        </li>
+      </ul>
     </div>
   </section>
 </template>
@@ -41,7 +41,8 @@ p {
 }
 
 h3 {
-    text-transform: capitalize;
+  text-transform: capitalize;
+      text-align: center;
 }
 
 ul {
@@ -50,10 +51,19 @@ ul {
   padding-left: 0;
   display: flex;
   flex-wrap: wrap;
-  // justify-content: center;
+      justify-content: center;
+
 
   li {
     margin: 1rem;
+  }
+}
+
+@media (max-width: $screen-m) {
+  ul {
+  }
+
+  h3 {
   }
 }
 </style>
