@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <h2>Contact</h2>
+      <h2>Locatie</h2>
 
       <div v-if="contactpagina" class="contact">
         <d-img
@@ -31,7 +31,7 @@
     </section>
 
     <section class="contactinfo">
-      <h2>Bellen</h2>
+      <h2>Contactinformatie</h2>
 
       <ul v-if="geleidingen">
         <li v-for="geleiding in geleidingen" :key="geleiding.id">
