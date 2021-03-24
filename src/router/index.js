@@ -20,7 +20,7 @@ export const routes = [
     component: () => import(/* webpackChunkName: "geleidingen" */ '../views/GeleidingDetail.vue'),
     meta: {
       sitemap: {
-        slugs: ["Kabouters", "Piepjongknapen", "Jongknapen", "Jonghernieuwers", "Hernieuwers"]
+        slugs: ["kabouters", "piepjongknapen", "jongknapen", "jonghernieuwers", "hernieuwers"]
       }
     }
   },

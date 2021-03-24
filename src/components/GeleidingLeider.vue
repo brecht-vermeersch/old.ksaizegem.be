@@ -1,11 +1,21 @@
 <template>
   <div class="leider">
-    <d-img class="leider__portrait" :asset="leider.foto" :alt="'Portret van ' + leider.voornaam" />
+    <d-img
+      class="leider__portrait"
+      :asset="leider.foto"
+      :alt="'Portret van ' + leider.voornaam"
+    />
 
     <div>
-      <div class="leider__naam"><strong>Naam: </strong>{{ leider.voornaam }} {{ leider.achternaam }}</div>
-      <div class="leider__nickname"><strong>Bijnaam: </strong>{{ leider.bijnaam }}</div>
-      <div class="leider__function"><strong>Functie: </strong>{{ leider.functie }}</div>
+      <div class="leider__naam">
+        <strong>Naam: </strong>{{ leider.voornaam }} {{ leider.achternaam }}
+      </div>
+      <div class="leider__nickname">
+        <strong>Bijnaam: </strong>{{ leider.bijnaam }}
+      </div>
+      <div class="leider__function">
+        <strong>Functie: </strong>{{ leider.functie }}
+      </div>
     </div>
   </div>
 </template>
@@ -16,7 +26,7 @@ export default {
     leider: {
       type: Object,
     },
-  }
+  },
 };
 </script>
 
@@ -24,6 +34,7 @@ export default {
 .leider {
   display: flex;
   align-items: center;
+  width: 100%;
 
   &__portrait {
     object-fit: cover;

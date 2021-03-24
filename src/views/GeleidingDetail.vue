@@ -4,7 +4,7 @@
       <geleiding-info :geleiding="geleiding" />
     </section>
 
-    <section>
+    <section class="masonry-section">
       <div class="leiders">
         <h3>Leiders</h3>
 
@@ -20,7 +20,7 @@
       <div class="banprogramma">
         <h3>Banprogramma</h3>
 
-        <ul v-if="geleiding.activiteiten">
+        <ul v-if="geleiding.activiteiten.length">
           <li v-for="activiteit in sortedActiviteiten" :key="activiteit.id">
             <geleiding-activiteit :activiteit="activiteit" />
           </li>
@@ -40,42 +40,10 @@
             </li>
           </ul>
           <p v-else>Geen bestanden te zien.</p>
-        </div>
-        <!-- <div>
-          <h4>Algemeen</h4>
-          <ul v-if="algemeneBestanden.length">
-            <li
-              v-for="bestand in algemeneBestanden"
-              :key="bestand.id"
-            >
-              <geleiding-bestand :bestand="bestand" />
-            </li>
-          </ul>
-          <p v-else>Geen bestanden te zien.</p>
-
-          <h4>Boekjes</h4>
-          <ul v-if="boekjesBestanden.length">
-            <li
-              v-for="bestand in boekjesBestanden"
-              :key="bestand.id"
-            >
-              <geleiding-bestand :bestand="bestand" />
-            </li>
-          </ul>
-          <p v-else>Geen bestanden te zien.</p>
-
-          <h4>Andere</h4>
-          <ul v-if="andereBestanden.length">
-            <li
-              v-for="bestand in andereBestanden"
-              :key="bestand.id"
-            >
-              <geleiding-bestand :bestand="bestand" />
-            </li>
-          </ul>
-          <p v-else>Geen bestanden te zien.</p>
-        </div> -->
+        </div> 
       </div>
+
+       
     </section>
   </div>
   <spinner v-else />

@@ -35,9 +35,8 @@ export default {
 <style scoped lang="scss">
 .activiteit {
   display: grid;
-  grid-template-columns: 50% 50%;
-  // display: flex;
-  // justify-content: flex-start;
+  grid-template-columns: 40% 60%;
+
 
   &__datetime {
     border-right: 1px solid #333;

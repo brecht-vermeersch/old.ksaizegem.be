@@ -31,7 +31,7 @@ export default {
   computed: {
     visibleGeleidingen() {
       return this.geleidingen.filter(
-        (g) => g.naam !== "Bond" && g.naam !== "VZW"
+        (g) => g.naam !== "bond" && g.naam !== "VZW"
       );
     },
   },

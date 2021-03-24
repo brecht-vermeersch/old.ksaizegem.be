@@ -14,15 +14,15 @@ import DirectusDownload from "@/components/DirectusDownload.vue";
 
 export default {
   components: {
-    DirectusDownload
+    DirectusDownload,
   },
 
   props: {
     bestand: {
-      type: Object
-    }
+      type: Object,
+    },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
