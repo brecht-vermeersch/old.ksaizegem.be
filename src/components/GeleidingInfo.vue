@@ -40,6 +40,10 @@ export default {
   flex-wrap: wrap;
   align-items: center;
 
+  h3 {
+    text-align: left;
+  }
+
   &__img,
   &__body {
     width: 45%;

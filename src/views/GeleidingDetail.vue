@@ -150,6 +150,10 @@ ul {
   li {
     margin-bottom: 1rem;
   }
+
+  h3 {
+    text-align: center;
+  }
 }
 
 .downloads {

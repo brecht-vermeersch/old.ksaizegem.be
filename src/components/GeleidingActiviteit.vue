@@ -34,7 +34,10 @@ export default {
 
 <style scoped lang="scss">
 .activiteit {
-  display: flex;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  // display: flex;
+  // justify-content: flex-start;
 
   &__datetime {
     border-right: 1px solid #333;
@@ -42,7 +45,7 @@ export default {
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-right: 1rem;
-    width: 40%;
+    // width: 40%;
   }
 
   &__date {
@@ -50,7 +53,7 @@ export default {
   }
 
   &__info {
-    width: 60%;
+    // width: 60%;
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 1rem;
