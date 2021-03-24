@@ -20,8 +20,8 @@
       <div class="banprogramma">
         <h3>Banprogramma</h3>
 
-        <ul v-if="geleiding.activiteit">
-          <li v-for="activiteit in geleiding.activiteiten" :key="activiteit.id">
+        <ul v-if="geleiding.activiteiten">
+          <li v-for="activiteit in sortedActiviteiten" :key="activiteit.id">
             <geleiding-activiteit :activiteit="activiteit" />
           </li>
         </ul>
@@ -31,7 +31,17 @@
       <div class="downloads">
         <h3>Downloads</h3>
 
-        <div>
+        <div v-for="type in bestandenByType" :key="type.id">
+          <h4>{{ type.naam }}</h4>
+
+          <ul v-if="type.bestanden.length > 0">
+            <li v-for="bestand in type.bestanden" :key="bestand.id">
+              <geleiding-bestand :bestand="bestand" />
+            </li>
+          </ul>
+          <p v-else>Geen bestanden te zien.</p>
+        </div>
+        <!-- <div>
           <h4>Algemeen</h4>
           <ul v-if="algemeneBestanden.length">
             <li
@@ -64,7 +74,7 @@
             </li>
           </ul>
           <p v-else>Geen bestanden te zien.</p>
-        </div>
+        </div> -->
       </div>
     </section>
   </div>
@@ -89,43 +99,36 @@ export default {
   data() {
     return {
       geleiding: null,
+      bestandenByType: [],
     };
   },
 
   async mounted() {
     this.geleiding = await api.getGeleiding(this.$route.params.naam);
+    this.bestandenByType = await api.getBestandenByType(
+      this.$route.params.naam
+    );
   },
 
   methods: {
-    getBestandenByType(type) {
-      return this.geleiding.bestanden.filter((b) => {
-        return b.type.naam === type;
-      });
-    },
-
     isHoofdleider(leider) {
       return leider?.functie?.toLowerCase() === "hoofdleider";
-    }
+    },
   },
 
   computed: {
-    algemeneBestanden() {
-      return this.getBestandenByType("algemeen");
-    },
-
-    boekjesBestanden() {
-      return this.getBestandenByType("boekjes");
-    },
-
-    andereBestanden() {
-      return this.getBestandenByType("andere");
-    },
-
     sortedLeiders() {
+      // plaats hoofdleider vanvoor
       return [...this.geleiding.leiders].sort((a, b) => {
         return this.isHoofdleider(b) ? 1 : -1;
-      })
-    }
+      });
+    },
+
+    sortedActiviteiten() {
+      return [...this.geleiding.activiteiten]
+        .filter((a) => new Date(a.einde) > new Date())
+        .sort((a, b) => new Date(a.begin) - new Date(b.begin));
+    },
   },
 };
 </script>

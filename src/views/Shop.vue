@@ -41,8 +41,7 @@ p {
 }
 
 h3 {
-  text-transform: capitalize;
-      text-align: center;
+    text-align: center;
 }
 
 ul {
@@ -56,14 +55,6 @@ ul {
 
   li {
     margin: 1rem;
-  }
-}
-
-@media (max-width: $screen-m) {
-  ul {
-  }
-
-  h3 {
   }
 }
 </style>

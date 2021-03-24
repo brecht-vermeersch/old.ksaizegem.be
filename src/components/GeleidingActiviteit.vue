@@ -7,7 +7,7 @@
 
     <div class="activiteit__info">
       <div class="activiteit__title">{{ activiteit.naam }}</div>
-      <div class="activiteit__description">{{ activiteit.beschrijving }}</div>
+      <div class="activiteit__description" v-if="activiteit.beschrijving">{{ activiteit.beschrijving }}</div>
     </div>
   </div>
 </template>
@@ -42,7 +42,7 @@ export default {
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-right: 1rem;
-        width: 40%;
+    width: 40%;
   }
 
   &__date {
@@ -54,6 +54,9 @@ export default {
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 
   &__title {

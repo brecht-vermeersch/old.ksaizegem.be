@@ -1,16 +1,16 @@
 const months = [
-  "jan",
-  "feb",
-  "mar",
-  "apr",
+  "januari",
+  "februari",
+  "maart",
+  "april",
   "mei",
-  "jun",
-  "jul",
-  "aug",
-  "sep",
-  "okt",
-  "nov",
-  "dec",
+  "juni",
+  "juli",
+  "augustus",
+  "september",
+  "oktober",
+  "november",
+  "december",
 ];
 
 function getDay(date) {
@@ -19,6 +19,10 @@ function getDay(date) {
 
 function getMonth(date) {
   return months[date.getMonth()];
+}
+
+function getYear(date) {
+  return date.getFullYear();
 }
 
 function getHours(date) {
@@ -33,16 +37,32 @@ export function getActiviteitDate(beginIso, endIso) {
   const beginDate = new Date(beginIso);
   const beginDay = getDay(beginDate);
   const beginMonth = getMonth(beginDate);
+  const beginYear = getYear(beginDate);
 
   const endDate = new Date(endIso);
   const endDay = getDay(endDate);
   const endMonth = getMonth(endDate);
+  const endYear = getYear(beginDate);
 
-  if (beginDay === endDay && beginMonth === endMonth) {
-    return `${beginDay} ${beginMonth}`;
+  if (beginDay === endDay && beginMonth === endMonth && beginYear === endYear) {
+    // 14 februari 2021
+    return `${beginDay} ${beginMonth} ${beginYear}`;
   }
 
-  return `${beginDay} ${beginMonth} - ${endDay} ${endMonth}`;
+  if (beginDay !== endDay && beginMonth === endMonth && beginYear === endYear) {
+    // 14 - 17 februari 2021
+    return `${beginDay} - ${endDay} ${endMonth} ${beginYear}`;
+  }
+
+  if (beginDay !== endDay && beginMonth !== endMonth && beginYear === endYear) {
+    // 14 februari - 17 maart 2021
+    return `${beginDay} ${beginMonth} - ${endDay} ${endMonth} ${beginYear}`;
+  }
+
+  if (beginDay !== endDay && beginMonth !== endMonth && beginYear !== endYear) {
+      // 14 februari 2020 - 17 maart 2021
+      return `${beginDay} ${beginMonth} ${beginYear} - ${endDay} ${endMonth} ${endYear}`;
+  }
 }
 
 
