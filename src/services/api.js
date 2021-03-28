@@ -8,8 +8,9 @@ async function getGeleidingen() {
 }
 
 async function getGeleiding(naam) {
-  const { data } = await axios.get(`/items/geleidingen?fields=*,activiteiten.*,leiders.*`, {
+  const { data } = await axios.get(`/items/geleidingen`, {
     params: {
+      fields: "*,activiteiten.*,leiders.*,bestanden.*, bestanden.type.naam",
       filter: {
         naam: {
           "_eq": naam
@@ -40,13 +41,13 @@ async function getShopItemsByType() {
   return data.data;
 }
 
-async function getBestandenByType(geleidingNaam) {
+async function getBestandenByType(geleidingId) {
   const { data } = await axios.get(`/items/bestanden_types?fields=*,bestanden.*`, {
     params: {
       filter: {
         bestanden: {
           geleiding: {
-            naam: { "_eq": geleidingNaam } 
+            "_eq": geleidingId
           }
         }
       }

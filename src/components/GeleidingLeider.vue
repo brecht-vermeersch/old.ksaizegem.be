@@ -10,10 +10,10 @@
       <div class="leider__naam">
         <strong>Naam: </strong>{{ leider.voornaam }} {{ leider.achternaam }}
       </div>
-      <div class="leider__nickname">
+      <div v-if="leider.bijnaam" class="leider__nickname">
         <strong>Bijnaam: </strong>{{ leider.bijnaam }}
       </div>
-      <div class="leider__function">
+      <div v-if="leider.functie" class="leider__function">
         <strong>Functie: </strong>{{ leider.functie }}
       </div>
     </div>

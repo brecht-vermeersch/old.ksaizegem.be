@@ -4,8 +4,8 @@
       <geleiding-info :geleiding="geleiding" />
     </section>
 
-    <section class="masonry-section">
-      <div class="leiders">
+    <section>
+      <div v-if="geleiding.leiders.length" class="leiders">
         <h3>Leiders</h3>
 
         <ul v-if="geleiding.leiders.length">
@@ -17,33 +17,29 @@
         <p v-else>Geen leiders te zien.</p>
       </div>
 
-      <div class="banprogramma">
+      <div v-if="sortedActiviteiten.length" class="banprogramma">
         <h3>Banprogramma</h3>
 
-        <ul v-if="geleiding.activiteiten.length">
+        <ul >
           <li v-for="activiteit in sortedActiviteiten" :key="activiteit.id">
             <geleiding-activiteit :activiteit="activiteit" />
           </li>
         </ul>
-        <p v-else>Geen activiteiten te zien.</p>
       </div>
 
-      <div class="downloads">
+      <div v-if="geleiding.bestanden.length" class="downloads">
         <h3>Downloads</h3>
 
-        <div v-for="type in bestandenByType" :key="type.id">
-          <h4>{{ type.naam }}</h4>
+        <div v-for="(bestanden, type) in bestandenByType" :key="type">
+          <h4>{{ type }}</h4>
 
-          <ul v-if="type.bestanden.length > 0">
-            <li v-for="bestand in type.bestanden" :key="bestand.id">
+          <ul>
+            <li v-for="bestand in bestanden" :key="bestand.id">
               <geleiding-bestand :bestand="bestand" />
             </li>
           </ul>
-          <p v-else>Geen bestanden te zien.</p>
-        </div> 
+        </div>
       </div>
-
-       
     </section>
   </div>
   <spinner v-else />
@@ -55,6 +51,7 @@ import GeleidingLeider from "@/components/GeleidingLeider.vue";
 import GeleidingActiviteit from "@/components/GeleidingActiviteit.vue";
 import GeleidingBestand from "@/components/GeleidingBestand.vue";
 import api from "@/services/api.js";
+import groupBy from "lodash.groupby";
 
 export default {
   components: {
@@ -67,15 +64,11 @@ export default {
   data() {
     return {
       geleiding: null,
-      bestandenByType: [],
     };
   },
 
   async mounted() {
     this.geleiding = await api.getGeleiding(this.$route.params.naam);
-    this.bestandenByType = await api.getBestandenByType(
-      this.$route.params.naam
-    );
   },
 
   methods: {
@@ -97,6 +90,10 @@ export default {
         .filter((a) => new Date(a.einde) > new Date())
         .sort((a, b) => new Date(a.begin) - new Date(b.begin));
     },
+
+    bestandenByType() {  
+      return groupBy(this.geleiding.bestanden, "type.naam");
+    }
   },
 };
 </script>

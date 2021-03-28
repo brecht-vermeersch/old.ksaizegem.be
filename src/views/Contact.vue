@@ -31,7 +31,7 @@
     </section>
 
     <section class="contactinfo">
-      <h2>Contactinformatie</h2>
+      <h2>Contact</h2>
 
       <ul v-if="geleidingen">
         <li v-for="geleiding in geleidingen" :key="geleiding.id">

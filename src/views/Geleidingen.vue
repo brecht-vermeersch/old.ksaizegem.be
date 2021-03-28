@@ -5,7 +5,7 @@
     <div v-if="geleidingen.length">
       <geleiding-info
         link
-        v-for="(geleiding, index) in visibleGeleidingen"
+        v-for="(geleiding, index) in geleidingen"
         :key="geleiding.id"
         :geleiding="geleiding"
         :inverted="index % 2 === 1"
@@ -26,14 +26,6 @@ export default {
     return {
       geleidingen: [],
     };
-  },
-
-  computed: {
-    visibleGeleidingen() {
-      return this.geleidingen.filter(
-        (g) => g.naam !== "bond" && g.naam !== "VZW"
-      );
-    },
   },
 
   async mounted() {
