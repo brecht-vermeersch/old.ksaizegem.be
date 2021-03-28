@@ -122,6 +122,7 @@ export default {
   .hero {
     &__title {
       font-size: 2rem;
+      text-transform: none;;
     }
   }
   .algemeen {
