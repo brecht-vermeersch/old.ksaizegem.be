@@ -34,10 +34,6 @@ a {
 section {
   @include width-container;
   margin-bottom: 3rem;
-
-  &:first-of-type {
-    margin-top: 1rem;
-  }
 }
 
 p {
