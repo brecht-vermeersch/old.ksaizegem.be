@@ -7,9 +7,19 @@ async function getGeleidingen() {
   return data.data;
 }
 
-async function getGeleiding(id) {
-  const { data } = await axios.get(`/items/geleidingen/${id}?fields=*,activiteiten.*,leiders.*,bestanden.bestanden_id.*,bestanden.bestanden_id.type.*`);
-  return data.data;
+async function getGeleiding(naam) {
+  const { data } = await axios.get(`/items/geleidingen`, {
+    params: {
+      fields: "*,activiteiten.*,leiders.*,bestanden.*, bestanden.type.naam",
+      filter: {
+        naam: {
+          "_eq": naam
+        }
+      }
+    },
+  });
+
+  return data.data[0];
 }
 
 async function getHomePage() {
@@ -22,8 +32,29 @@ async function getContactPage() {
   return data.data;
 }
 
-function getAssetUrl(id) {
-  return `https://cms.ksaizegem.be/assets/${id}`;
+function getAssetUrl(id, download = false) {
+  return `https://cms.ksaizegem.be/assets/${id}${download ? "?download" : ""}`;
 }
 
-export default { getGeleidingen, getGeleiding, getAssetUrl, getHomePage, getContactPage }
+async function getShopItemsByType() {
+  const { data } = await axios.get(`/items/winkel_artikelen_types?fields=*,artikelen.*`);
+  return data.data;
+}
+
+async function getBestandenByType(geleidingId) {
+  const { data } = await axios.get(`/items/bestanden_types?fields=*,bestanden.*`, {
+    params: {
+      filter: {
+        bestanden: {
+          geleiding: {
+            "_eq": geleidingId
+          }
+        }
+      }
+    }
+  });
+
+  return data.data;
+}
+
+export default { getGeleidingen, getGeleiding, getAssetUrl, getHomePage, getContactPage, getShopItemsByType, getBestandenByType }

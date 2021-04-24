@@ -1,26 +1,31 @@
 <template>
   <div v-if="homepagina">
     <div class="hero">
-      <img class="hero__bg" :src="getAssetUrl(homepagina.slogan_foto)" alt="Grote banner foto" />
+      <d-img class="hero__bg" :asset="homepagina.slogan_foto" alt="Grote banner foto" />
 
       <div class="hero__fg">
         <h2 class="hero__title" v-html="homepagina.slogan_tekst"></h2>
+<<<<<<< HEAD
 
         <router-link
           to="/inschrijven"
           class="button button"
           >{{ homepagina.slogan_knop }}</router-link
         >
+=======
+        <router-link class="button button" to="/inschrijven">{{ homepagina.slogan_knop }}</router-link>
+>>>>>>> e63b871d5043602cf3d1aaa170ef783414624fe4
       </div>
     </div>
 
     <section class="algemeen">
-      <img class="algemeen__img" :src="getAssetUrl(homepagina.algemeen_foto)" />
+      <d-img class="algemeen__img" :asset="homepagina.algemeen_foto" alt="Algemene foto KSA" />
 
       <div class="algemeen__card">
         <h3>Algemeen</h3>
         <div v-html="homepagina.algemeen_tekst"></div>
 
+<<<<<<< HEAD
         <router-link
           to="/contact"
           class="button button--blue"
@@ -28,25 +33,35 @@
           homepagina.algemeen_knop
         }}</router-link
         >
+=======
+        <router-link class="button button--blue" to="/contact">{{
+          homepagina.algemeen_knop
+        }}</router-link>
+>>>>>>> e63b871d5043602cf3d1aaa170ef783414624fe4
       </div>
     </section>
 
     <section class="geleidingen">
-      <img class="geleidingen__img" :src="getAssetUrl(homepagina.geleidingen_foto)" />
+      <d-img class="geleidingen__img" :asset="homepagina.geleidingen_foto" alt="Foto geleidingen" />
 
       <div class="geleidingen__card">
         <h3>Geleidingen</h3>
 
         <div v-html="homepagina.geleidingen_tekst"></div>
 
+<<<<<<< HEAD
         <router-link
           to="/geleidingen"
           class="button button--blue"
           >Bezoekje brengen</router-link
         >
+=======
+        <router-link class="button button--blue" to="/geleidingen">Bezoekje brengen</router-link>
+>>>>>>> e63b871d5043602cf3d1aaa170ef783414624fe4
       </div>
     </section>
   </div>
+  <spinner v-else />
 </template>
 
 <script>
@@ -61,10 +76,6 @@ export default {
 
   async mounted() {
     this.homepagina = await api.getHomePage();
-  },
-
-  methods: {
-    getAssetUrl: api.getAssetUrl,
   },
 };
 </script>
@@ -141,6 +152,7 @@ export default {
   .hero {
     &__title {
       font-size: 2rem;
+      text-transform: none;;
     }
   }
   .algemeen {

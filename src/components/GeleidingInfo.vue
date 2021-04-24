@@ -6,18 +6,16 @@
         <abbr class="geleiding__abbr" title="Kabouters">{{ geleiding.afkorting }}</abbr>
       </div>
 
-      <a v-if="link" class="geleiding__link" :href="'geleidingen/' + geleiding.id">{{ geleiding.naam }} ></a>
+      <a v-if="link" class="geleiding__link" :href="'geleidingen/' + geleiding.naam">bezoek ></a>
 
       <p>{{ geleiding.beschrijving }}</p>
     </div>
 
-    <img class="geleiding__img" :src="src" />
+    <d-img class="geleiding__img" :asset="geleiding.foto" :alt="'Monstertje en logo van de ' + geleiding.naam"/>
   </article>
 </template>
 
 <script>
-import api from "@/services/api.js"
-
 export default {
   props: {
     link: {
@@ -31,12 +29,6 @@ export default {
     geleiding: {
       type: Object
     }
-  },
-
-  data() {
-    return {
-      src: api.getAssetUrl(this.geleiding.foto)
-    }
   }
 };
 </script>
@@ -46,6 +38,11 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
+
+  h3 {
+    text-align: left;
+  }
 
   &__img,
   &__body {

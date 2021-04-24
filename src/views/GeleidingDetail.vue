@@ -1,15 +1,15 @@
 <template>
-  <div v-if="!geleiding.length">
+  <div v-if="geleiding">
     <section>
       <geleiding-info :geleiding="geleiding" />
     </section>
 
     <section>
-      <div class="leiders">
+      <div v-if="geleiding.leiders.length" class="leiders">
         <h3>Leiders</h3>
 
-        <ul v-if="geleiding.leiders">
-          <li v-for="leider in geleiding.leiders" :key="leider.id">
+        <ul v-if="geleiding.leiders.length">
+          <li v-for="leider in sortedLeiders" :key="leider.id">
             <geleiding-leider :leider="leider" />
           </li>
         </ul>
@@ -17,57 +17,32 @@
         <p v-else>Geen leiders te zien.</p>
       </div>
 
-      <div class="banprogramma">
+      <div v-if="sortedActiviteiten.length" class="banprogramma">
         <h3>Banprogramma</h3>
 
-        <ul v-if="geleiding.activiteit">
-          <li v-for="activiteit in geleiding.activiteiten" :key="activiteit.id">
+        <ul >
+          <li v-for="activiteit in sortedActiviteiten" :key="activiteit.id">
             <geleiding-activiteit :activiteit="activiteit" />
           </li>
         </ul>
-        <p v-else>Geen activiteiten te zien.</p>
       </div>
 
-      <div class="downloads">
+      <div v-if="geleiding.bestanden.length" class="downloads">
         <h3>Downloads</h3>
 
-        <div>
-          <h4>Algemeen</h4>
-          <ul v-if="algemeneBestanden.length">
-            <li
-              v-for="bestand in algemeneBestanden"
-              :key="bestand.bestanden_id.id"
-            >
-              <geleiding-bestand :bestand="bestand.bestanden_id" />
-            </li>
-          </ul>
-          <p v-else>Geen bestanden te zien.</p>
+        <div v-for="(bestanden, type) in bestandenByType" :key="type">
+          <h4>{{ type }}</h4>
 
-          <h4>Boekjes</h4>
-          <ul v-if="boekjesBestanden.length">
-            <li
-              v-for="bestand in boekjesBestanden"
-              :key="bestand.bestanden_id.id"
-            >
-              <geleiding-bestand :bestand="bestand.bestanden_id" />
+          <ul>
+            <li v-for="bestand in bestanden" :key="bestand.id">
+              <geleiding-bestand :bestand="bestand" />
             </li>
           </ul>
-          <p v-else>Geen bestanden te zien.</p>
-
-          <h4>Andere</h4>
-          <ul v-if="andereBestanden.length">
-            <li
-              v-for="bestand in andereBestanden"
-              :key="bestand.bestanden_id.id"
-            >
-              <geleiding-bestand :bestand="bestand.bestanden_id" />
-            </li>
-          </ul>
-          <p v-else>Geen bestanden te zien.</p>
         </div>
       </div>
     </section>
   </div>
+  <spinner v-else />
 </template>
 
 <script>
@@ -76,6 +51,7 @@ import GeleidingLeider from "@/components/GeleidingLeider.vue";
 import GeleidingActiviteit from "@/components/GeleidingActiviteit.vue";
 import GeleidingBestand from "@/components/GeleidingBestand.vue";
 import api from "@/services/api.js";
+import groupBy from "lodash.groupby";
 
 export default {
   components: {
@@ -87,34 +63,37 @@ export default {
 
   data() {
     return {
-      geleiding: [],
+      geleiding: null,
     };
   },
 
   async mounted() {
-    this.geleiding = await api.getGeleiding(this.$route.params.id);
+    this.geleiding = await api.getGeleiding(this.$route.params.naam);
   },
 
   methods: {
-    getBestanden(type) {
-      return this.geleiding?.bestanden.filter((b) => {
-        return b.bestanden_id && b.bestanden_id.type.naam === type;
-      });
+    isHoofdleider(leider) {
+      return leider?.functie?.toLowerCase() === "hoofdleider";
     },
   },
 
   computed: {
-    algemeneBestanden() {
-      return this.getBestanden("algemeen");
+    sortedLeiders() {
+      // plaats hoofdleider vanvoor
+      return [...this.geleiding.leiders].sort((a, b) => {
+        return this.isHoofdleider(b) ? 1 : -1;
+      });
     },
 
-    boekjesBestanden() {
-      return this.getBestanden("boekjes");
+    sortedActiviteiten() {
+      return [...this.geleiding.activiteiten]
+        .filter((a) => new Date(a.einde) > new Date())
+        .sort((a, b) => new Date(a.begin) - new Date(b.begin));
     },
 
-    andereBestanden() {
-      return this.getBestanden("andere");
-    },
+    bestandenByType() {  
+      return groupBy(this.geleiding.bestanden, "type.naam");
+    }
   },
 };
 </script>
@@ -135,6 +114,10 @@ ul {
 .banprogramma {
   li {
     margin-bottom: 1rem;
+  }
+
+  h3 {
+    text-align: center;
   }
 }
 

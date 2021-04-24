@@ -1,8 +1,8 @@
 <template>
   <div class="contact-info">
-    <img
+    <d-img
       class="contact-info__img"
-      :src="getAssetUrl(geleiding.icoon)"
+      :asset="geleiding.icoon"
       alt="Logo van de geleiding"
     />
 
@@ -37,14 +37,8 @@
 </template>
 
 <script>
-import api from "@/services/api.js";
-
 export default {
   props: ["geleiding"],
-
-  methods: {
-    getAssetUrl: api.getAssetUrl,
-  },
 };
 </script>
 

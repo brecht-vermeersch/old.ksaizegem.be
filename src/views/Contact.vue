@@ -1,12 +1,12 @@
 <template>
   <div>
     <section>
-      <h2>Contact</h2>
+      <h2>Locatie</h2>
 
       <div v-if="contactpagina" class="contact">
-        <img
+        <d-img
           class="contact__map"
-          :src="getAssetUrl(contactpagina.kaart)"
+          :asset="contactpagina.kaart"
           alt="Kaart van de locatie van de KSA"
         />
 
@@ -27,16 +27,18 @@
           </div>
         </div>
       </div>
+      <spinner v-else />
     </section>
 
     <section class="contactinfo">
-      <h2>Bellen</h2>
+      <h2>Contact</h2>
 
       <ul v-if="geleidingen">
         <li v-for="geleiding in geleidingen" :key="geleiding.id">
           <geleiding-contact :geleiding="geleiding" />
         </li>
       </ul>
+      <spinner v-else />
     </section>
   </div>
 </template>
@@ -55,13 +57,19 @@ export default {
     };
   },
 
-  async mounted() {
-    this.contactpagina = await api.getContactPage();
-    this.geleidingen = await api.getGeleidingen();
+  mounted() {
+    this.loadPage();
+    this.loadGeleidigen();
   },
 
   methods: {
-    getAssetUrl: api.getAssetUrl,
+    async loadPage() {
+      this.contactpagina = await api.getContactPage();
+    },
+
+    async loadGeleidigen() {
+      this.geleidingen = await api.getGeleidingen();
+    },
   },
 };
 </script>
@@ -79,7 +87,6 @@ ul {
   li {
     margin: 1rem;
   }
-  
 }
 
 .contact {
@@ -117,9 +124,9 @@ ul {
       margin-bottom: 1rem;
     }
 
-     &__address {
-    margin-left: 0;
-     }
+    &__address {
+      margin-left: 0;
+    }
   }
 }
 </style>

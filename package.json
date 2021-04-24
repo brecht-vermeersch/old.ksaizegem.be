@@ -5,15 +5,21 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build-report": "vue-cli-service build --report",
+    "sitemap": "vue-cli-service sitemap"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "esm": "^3.2.25",
+    "lodash.groupby": "^4.6.0",
     "node-sass": "^5.0.0",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.12",
-    "vue-router": "^3.2.0"
+    "vue-gtag": "^1.11.0",
+    "vue-router": "^3.2.0",
+    "vue-simple-spinner": "^1.2.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -25,6 +31,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-sitemap": "~2.3.0",
     "vue-template-compiler": "^2.6.11"
   }
 }

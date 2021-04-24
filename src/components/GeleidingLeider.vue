@@ -1,30 +1,31 @@
 <template>
   <div class="leider">
-    <img class="leider__portrait" :src="src" :alt="alt" />
+    <d-img
+      class="leider__portrait"
+      :asset="leider.foto"
+      :alt="'Portret van ' + leider.voornaam"
+    />
 
     <div>
-      <div class="leider__naam"><strong>Naam: </strong>{{ leider.voornaam }} {{ leider.achternaam }}</div>
-      <div class="leider__nickname"><strong>Bijnaam: </strong>{{ leider.bijnaam }}</div>
-      <div class="leider__function"><strong>Functie: </strong>{{ leider.functie }}</div>
+      <div class="leider__naam">
+        <strong>Naam: </strong>{{ leider.voornaam }} {{ leider.achternaam }}
+      </div>
+      <div v-if="leider.bijnaam" class="leider__nickname">
+        <strong>Bijnaam: </strong>{{ leider.bijnaam }}
+      </div>
+      <div v-if="leider.functie" class="leider__function">
+        <strong>Functie: </strong>{{ leider.functie }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import api from "@/services/api.js"
-
 export default {
   props: {
     leider: {
       type: Object,
     },
-  },
-
-  data() {
-    return {
-      src: api.getAssetUrl(this.leider.foto),
-      alt: `Portret van ${this.leider.voornaam}`
-    };
   },
 };
 </script>
@@ -33,6 +34,7 @@ export default {
 .leider {
   display: flex;
   align-items: center;
+  width: 100%;
 
   &__portrait {
     object-fit: cover;
