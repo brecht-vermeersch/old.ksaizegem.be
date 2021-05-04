@@ -8,7 +8,16 @@
       :alt="`Foto van ${item.titel}`"
     ></d-img>
 
-    <div class="shop-item__text" v-html="item.beschrijving"></div>
+    <ul class="shop-item__text" >
+      <li class="shop-item__price-size">
+        <img src="/img/sizes.svg" alt="maten icon" width="24" height="24">
+        <p>{{item.sizes}}</p>
+      </li>
+      <li class="shop-item__price-size">
+        <img src="/img/money.svg" alt="prijs icon" width="24" height="24">
+        <p>{{item.price}}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -21,7 +30,8 @@ export default {
 <style scoped lang="scss">
 .shop-item {
   border-radius: 25px;
-  border: 1px solid $orange;
+  background-image: url(/img/vector.png);
+  background-size: 100%;
   width: 18rem;
   height: 18rem;
   padding: 1rem;

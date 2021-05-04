@@ -6,7 +6,7 @@
         <abbr class="geleiding__abbr" title="Kabouters">{{ geleiding.afkorting }}</abbr>
       </div>
 
-      <a v-if="link" class="geleiding__link" :href="'geleidingen/' + geleiding.naam">bezoek ></a>
+      <a v-if="link" class="geleiding__link" :href="'geleidingen/' + geleiding.naam">{{ geleiding.naam }} bezoeken ></a>
 
       <p>{{ geleiding.beschrijving }}</p>
     </div>
@@ -39,6 +39,11 @@ export default {
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+  margin-top: 64px;
+
+  &:first-of-type {
+    margin-top: 32px;
+  }
 
   h3 {
     text-align: left;

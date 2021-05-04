@@ -4,9 +4,34 @@
       <geleiding-info :geleiding="geleiding" />
     </section>
 
-    <section>
+    <div class="geleiding__grid">
+      
+      <div v-if="sortedActiviteiten.length" class="banprogramma">
+        <h3 class="section__title">Banprogramma</h3>
+
+        <ul >
+          <li v-for="activiteit in sortedActiviteiten" :key="activiteit.id">
+            <geleiding-activiteit :activiteit="activiteit" />
+          </li>
+        </ul>
+      </div>
+      
+      <div v-if="geleiding.bestanden.length" class="downloads">
+        <h3 class="section__title">Downloads</h3>
+
+        <div class="downloads__section" v-for="(bestanden, type) in bestandenByType" :key="type">
+          <h4 class="downloads__section__title">{{ type }}</h4>
+
+          <ul>
+            <li class="downloads__section__download" v-for="bestand in bestanden" :key="bestand.id">
+              <geleiding-bestand :bestand="bestand" />
+            </li>
+          </ul>
+        </div>
+      </div>  
+
       <div v-if="geleiding.leiders.length" class="leiders">
-        <h3>Leiders</h3>
+        <h3 class="section__title">Leiders</h3>
 
         <ul v-if="geleiding.leiders.length">
           <li v-for="leider in sortedLeiders" :key="leider.id">
@@ -16,31 +41,7 @@
 
         <p v-else>Geen leiders te zien.</p>
       </div>
-
-      <div v-if="sortedActiviteiten.length" class="banprogramma">
-        <h3>Banprogramma</h3>
-
-        <ul >
-          <li v-for="activiteit in sortedActiviteiten" :key="activiteit.id">
-            <geleiding-activiteit :activiteit="activiteit" />
-          </li>
-        </ul>
-      </div>
-
-      <div v-if="geleiding.bestanden.length" class="downloads">
-        <h3>Downloads</h3>
-
-        <div v-for="(bestanden, type) in bestandenByType" :key="type">
-          <h4>{{ type }}</h4>
-
-          <ul>
-            <li v-for="bestand in bestanden" :key="bestand.id">
-              <geleiding-bestand :bestand="bestand" />
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
   <spinner v-else />
 </template>
@@ -105,26 +106,59 @@ ul {
   padding-left: 0;
 }
 
+.geleiding__grid {
+  display: grid;
+  grid-gap: 64px;
+  max-width: 960px;
+  margin: auto;
+}
+
+@media (min-width: 960px) {
+  .geleiding__grid {
+    grid-auto-columns: 506px 390px;
+  }
+
+  .leiders {
+    grid-column-start: 2;
+  }
+}
+
 .leiders {
+  max-width: 390px;
+  margin: auto;
   li {
     margin-bottom: 1rem;
   }
 }
 
 .banprogramma {
+  margin: auto;
   li {
     margin-bottom: 1rem;
-  }
-
-  h3 {
-    text-align: center;
   }
 }
 
 .downloads {
+  max-width: 390px;
+  margin: auto;
   li {
     margin-bottom: 1rem;
   }
+}
+
+.section__title {
+  text-align: left;
+  border-bottom: 1px solid black;
+  padding-left: 10px;
+}
+
+.downloads__section__title {
+  text-align: start;
+}
+
+.downloads__section__download {
+  width: 250px;
+  margin-left: 10px;
 }
 
 section {

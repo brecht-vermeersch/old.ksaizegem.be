@@ -5,16 +5,7 @@
 
       <div class="hero__fg">
         <h2 class="hero__title" v-html="homepagina.slogan_tekst"></h2>
-<<<<<<< HEAD
-
-        <router-link
-          to="/inschrijven"
-          class="button button"
-          >{{ homepagina.slogan_knop }}</router-link
-        >
-=======
         <router-link class="button button" to="/inschrijven">{{ homepagina.slogan_knop }}</router-link>
->>>>>>> e63b871d5043602cf3d1aaa170ef783414624fe4
       </div>
     </div>
 
@@ -25,19 +16,9 @@
         <h3>Algemeen</h3>
         <div v-html="homepagina.algemeen_tekst"></div>
 
-<<<<<<< HEAD
-        <router-link
-          to="/contact"
-          class="button button--blue"
-          >{{
-          homepagina.algemeen_knop
-        }}</router-link
-        >
-=======
         <router-link class="button button--blue" to="/contact">{{
           homepagina.algemeen_knop
         }}</router-link>
->>>>>>> e63b871d5043602cf3d1aaa170ef783414624fe4
       </div>
     </section>
 
@@ -49,15 +30,7 @@
 
         <div v-html="homepagina.geleidingen_tekst"></div>
 
-<<<<<<< HEAD
-        <router-link
-          to="/geleidingen"
-          class="button button--blue"
-          >Bezoekje brengen</router-link
-        >
-=======
         <router-link class="button button--blue" to="/geleidingen">Bezoekje brengen</router-link>
->>>>>>> e63b871d5043602cf3d1aaa170ef783414624fe4
       </div>
     </section>
   </div>
